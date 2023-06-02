@@ -2,7 +2,7 @@
     email developer.appnium@gmail.com
 }
 
-portainer.cylia.cloud {
+portainer.{$BASE_DOMAIN} {
     reverse_proxy {
         to https://portainer:9443
 
@@ -13,7 +13,7 @@ portainer.cylia.cloud {
     }
 }
 
-drone.cylia.cloud {
+drone.{$BASE_DOMAIN} {
     reverse_proxy {
         to https://drone:9443
 
