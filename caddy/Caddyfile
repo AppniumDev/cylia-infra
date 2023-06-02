@@ -1,0 +1,14 @@
+{
+    email developer.appnium@gmail.com
+}
+
+{$SERVER_NAME} {
+    reverse_proxy {
+        to https://portainer:9443
+
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
+}
