@@ -36,7 +36,6 @@ services:
       - caddy_public
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy/site:/srv
       - caddy_data:/data
       - caddy_config:/config
     ports:
