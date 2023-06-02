@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  agent:
+  portainer-agent:
     image: portainer/agent:2.18.3
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -15,7 +15,7 @@ services:
 
   portainer:
     image: portainer/portainer-ee:2.18.3
-    command: -H tcp://tasks.agent:9001 --tlsskipverify
+    command: -H tcp://tasks.portainer-agent:9001 --tlsskipverify
     volumes:
       - portainer_data:/data
     networks:
@@ -35,7 +35,7 @@ services:
     networks:
       - caddy_public
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./mnt/caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     ports:
@@ -51,6 +51,13 @@ services:
       - target: 443
         published: ${HTTP3_PORT:-443}
         protocol: udp
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
 
 networks:
   agent_network:

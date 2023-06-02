@@ -2,9 +2,20 @@
     email developer.appnium@gmail.com
 }
 
-{$SERVER_NAME} {
+portainer.cylia.cloud {
     reverse_proxy {
         to https://portainer:9443
+
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+drone.cylia.cloud {
+    reverse_proxy {
+        to https://drone:9443
 
         transport http {
             tls
