@@ -28,12 +28,12 @@ services:
         constraints: [node.role == manager]
 
 networks:
-  caddy_public:
-    name: caddy_public
-    external: true
   agent_network:
     name: agent_network
     external: true
+
+  external:
+    name: $DOCKER_NETWORK
 
 volumes:
   portainer_data:

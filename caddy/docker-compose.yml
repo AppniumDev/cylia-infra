@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   caddy:
     image: caddy:2-alpine
@@ -32,7 +34,7 @@ services:
 
 networks:
   default:
-    name: $DOCKER_MY_NETWORK
+    name: $DOCKER_NETWORK
     external: true
 
 # docker network create -d overlay caddy_public
