@@ -31,9 +31,9 @@ networks:
   agent_network:
     name: agent_network
     external: true
-
-  external:
-    name: $DOCKER_NETWORK
+  caddy_public:
+    name: caddy_public
+    external: true
 
 volumes:
   portainer_data:

@@ -34,7 +34,7 @@ services:
 
 networks:
   default:
-    name: $DOCKER_NETWORK
+    name: caddy_public
     external: true
 
 # docker network create -d overlay caddy_public
