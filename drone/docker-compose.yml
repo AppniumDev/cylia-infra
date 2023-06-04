@@ -68,7 +68,7 @@ services:
     
   networks:
     external:
-      name: caddy_public
+      name: $DOCKER_NETWORK
 
   volumes:
     dronedata:
