@@ -2,13 +2,13 @@ version: '3.9'
 
 services:
   drone:
-    image: drone/drone:latest
+    image: drone/drone:2
     volumes:
       - ./mnt/dronedata:/data
     environment:
       - DRONE_DATABASE_DRIVER=sqlite3
       - DRONE_DATABASE_DATASOURCE=/data/database.sqlite
-      - DRONE_RPC_SECRET=drone-client-secret
+      - DRONE_RPC_SECRET=c0feb88a3cd153cc1f7446a8830ee587
       - DRONE_COOKIE_TIMEOUT=720h
       - DRONE_CRON_DISABLED=true
       - DRONE_OPEN=true
@@ -38,8 +38,8 @@ services:
       restart_policy:
         condition: on-failure 
 
-  drone-runner:
-    image: drone/drone-runner-docker:1
+  runner:
+    image: drone/drone-runner-docker:latest
     command: agent
     depends_on:
       - drone
@@ -49,7 +49,7 @@ services:
       - DRONE_RPC_SERVER=https://drone.cylia.cloud
       - DRONE_RPC_HOST=drone.cylia.cloud
       - DRONE_RPC_PROTO=https
-      - DRONE_RPC_SECRET=drone-client-secret
+      - DRONE_RPC_SECRET=c0feb88a3cd153cc1f7446a8830ee587
       - DRONE_RUNNER_CAPACITY=10
       - DRONE_RUNNER_NAME=drone-cylia-runner
       - DRONE_RUNNER_NETWORKS=caddy_public
@@ -67,8 +67,9 @@ services:
         condition: on-failure
     
   networks:
-    external:
-      name: caddy_public
+    caddy_public:
+      external: true
+      attachable: true
 
   volumes:
     dronedata:
