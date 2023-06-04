@@ -29,8 +29,6 @@ services:
     ports:
       - "8005:80"
     deploy:
-      placement:
-        constraints: [node.role == worker]
       replicas: 1
       update_config:
         parallelism: 2
@@ -57,8 +55,6 @@ services:
     networks:
       - caddy_public
     deploy:
-      placement:
-        constraints: [node.role == worker]
       replicas: 1
       update_config:
         parallelism: 2
