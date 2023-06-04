@@ -3,7 +3,6 @@ version: '3.9'
 services:
   caddy:
     image: caddy:2-alpine
-    container_name: caddy
     hostname: caddy
     restart: unless-stopped
     env_file: .env
@@ -24,17 +23,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy_config:/data
       - ./caddy_data:/config
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
 
 networks:
-  default:
-    name: caddy_public
-    external: true
+    caddy_public:
 
 # docker network create -d overlay caddy_public
