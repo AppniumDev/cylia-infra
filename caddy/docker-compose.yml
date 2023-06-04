@@ -21,8 +21,14 @@ services:
         protocol: udp
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
       - ./caddy_config:/data
       - ./caddy_data:/config
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
 
 networks:
     caddy_public:
