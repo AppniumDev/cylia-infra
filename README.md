@@ -19,7 +19,8 @@ A Portainer + Caddy + Drone with automatic SSL setup for production using docker
 8. Wait for service to go up
 9: Go to /portainer
     ```
-    docker stack deploy -c docker-compose.yml caddy
+    docker stack deploy -c docker-compose.yml portainer
     ```
 10. Wait for services to go up
 11. Navigate to https://portainer.cylia.cloud
+12. Go to /drone
