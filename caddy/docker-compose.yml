@@ -21,17 +21,12 @@ services:
         protocol: udp
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./site:/srv
-      - ./caddy_config:/data
-      - ./caddy_data:/config
-
-volumes:
-  caddy_data:
-    external: true
-  caddy_config:
+      - ./caddy_config:/config
+      - ./caddy_data:/data
 
 networks:
-    caddy_public:
-      external: true
+  default:
+    name: caddy_public
+    external: true
 
 # docker network create -d overlay caddy_public
