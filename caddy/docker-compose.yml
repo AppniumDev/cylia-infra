@@ -4,8 +4,21 @@ services:
   caddy:
     image: caddy:2-alpine
     hostname: caddy
-    restart: unless-stopped
-    env_file: .env
+    
+    networks:
+      - caddy_public
+
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
     ports:
       # HTTP
       - target: 80
@@ -19,6 +32,7 @@ services:
       - target: 443
         published: ${HTTP3_PORT:-443}
         protocol: udp
+
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy_config:/config
@@ -28,5 +42,6 @@ networks:
   default:
     name: caddy_public
     external: true
+    attachable: true
 
 # docker network create -d overlay caddy_public
