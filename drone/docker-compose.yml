@@ -69,7 +69,6 @@ services:
   networks:
     caddy_public:
       external: true
-      attachable: true
 
   volumes:
     dronedata:
