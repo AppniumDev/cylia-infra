@@ -41,5 +41,3 @@ services:
 networks:
   caddy_public:
     external: true
-
-# docker network create -d overlay caddy_public

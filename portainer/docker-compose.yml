@@ -35,5 +35,3 @@ networks:
 
 volumes:
   portainer_data:
-
-# docker network create -d overlay agent_network
