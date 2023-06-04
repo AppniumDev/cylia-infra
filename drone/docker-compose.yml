@@ -66,10 +66,10 @@ services:
       restart_policy:
         condition: on-failure
     
-  networks:
-    caddy_public:
-      external: true
+networks:
+  caddy_public:
+    external: true
 
-  volumes:
-    dronedata:
-      driver: "local"
+volumes:
+  dronedata:
+    driver: "local"
