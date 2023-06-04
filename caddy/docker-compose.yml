@@ -4,7 +4,7 @@ services:
   caddy:
     image: caddy:2-alpine
     hostname: caddy
-    
+
     networks:
       - caddy_public
 
@@ -39,9 +39,7 @@ services:
       - ./caddy_data:/data
 
 networks:
-  default:
-    name: caddy_public
+  caddy_public:
     external: true
-    attachable: true
 
 # docker network create -d overlay caddy_public
