@@ -4,7 +4,7 @@ services:
   drone:
     image: drone/drone:2
     volumes:
-      - ./mnt/dronedata:/data
+      - ./dronedata:/data
     environment:
       - DRONE_DATABASE_DRIVER=sqlite3
       - DRONE_DATABASE_DATASOURCE=/data/database.sqlite
@@ -72,4 +72,3 @@ networks:
 
 volumes:
   dronedata:
-    driver: "local"
