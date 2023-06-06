@@ -25,7 +25,6 @@ services:
       - DRONE_SERVER_HOST=drone.cylia.cloud
       - DRONE_SERVER_PROTO=https
       - DRONE_HOST=https://drone.cylia.cloud
-      - DRONE_SERVER_PROTO=https
       - DRONE_TLS_AUTOCERT=false
       - DRONE_AGENTS_ENABLED=true
       - DRONE_GITHUB=true
