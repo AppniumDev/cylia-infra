@@ -31,6 +31,7 @@ services:
       - DRONE_GITHUB_CLIENT_ID=efc9c213a2da4528556d
       - DRONE_GITHUB_CLIENT_SECRET=08c3b11deffef4ef0950abf229fcff40d9d4827c
     networks:
+      - caddy_public
       - drone_net
     ports:
       - "8005:80"
@@ -82,6 +83,8 @@ services:
 networks:
   drone_net:
     name: drone_net
+  caddy_public:
+    external: true
 
 volumes:
   dronedata:
