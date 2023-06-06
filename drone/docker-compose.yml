@@ -5,6 +5,8 @@ services:
     image: drone/drone:2
     volumes:
       - ./dronedata:/data
+    depends_on:
+      - drone-db
     environment:
       - DRONE_DATABASE_DRIVER=postgres
       - DRONE_DATABASE_DATASOURCE=postgres://drone:drone@drone-db:5432/drone?sslmode=disable
@@ -26,6 +28,7 @@ services:
       - DRONE_GITHUB_CLIENT_SECRET=08c3b11deffef4ef0950abf229fcff40d9d4827c
     networks:
       - caddy_public
+      - drone_internal
     ports:
       - "8005:80"
     deploy:
@@ -54,6 +57,7 @@ services:
       - DRONE_RUNNER_NETWORK_OPTS=com.docker.network.drive.mtu:1442
     networks:
       - caddy_public
+      - drone_internal
     deploy:
       replicas: 1
       update_config:
@@ -65,12 +69,17 @@ services:
   drone-db:
     image: postgres:15
     restart: always
+    networks:
+      - caddy_public
+      - drone_internal
     environment:
       POSTGRES_USER: drone
       POSTGRES_PASSWORD: drone
       POSTGRES_DB: drone
     
 networks:
+  drone-internal:
+    internal: true
   caddy_public:
     external: true
 
