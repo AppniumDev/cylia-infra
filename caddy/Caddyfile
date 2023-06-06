@@ -25,5 +25,5 @@ drone.cylia.cloud {
     }
     
     encode gzip zstd
-    reverse_proxy drone-server:8005
+    reverse_proxy drone:8005
 }
