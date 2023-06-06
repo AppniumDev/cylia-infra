@@ -82,6 +82,8 @@ services:
 networks:
   drone_net:
     name: drone_net
+    driver: overlay
+    attachable: true
   caddy_public:
     external: true
 
