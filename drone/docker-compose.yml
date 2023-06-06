@@ -2,8 +2,10 @@ version: '3.9'
 
 services:
   drone-server:
+    container_name: drone-server
     image: drone/drone:2
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./dronedata:/data
     depends_on:
       - drone-db
@@ -31,6 +33,7 @@ services:
       - DRONE_GITHUB_CLIENT_SECRET=08c3b11deffef4ef0950abf229fcff40d9d4827c
     networks:
       - caddy_public
+      - drone_net
     ports:
       - "8005:80"
     deploy:
@@ -49,16 +52,15 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_RPC_SERVER=drone-server:80
-      - DRONE_RPC_HOST=drone.cylia.cloud
-      - DRONE_RPC_PROTO=https
+      - DRONE_RPC_HOST=drone
+      - DRONE_RPC_PROTO=http
       - DRONE_RPC_SECRET=c0feb88a3cd153cc1f7446a8830ee587
       - DRONE_RUNNER_CAPACITY=10
       - DRONE_RUNNER_NAME=drone-cylia-runner
       - DRONE_RUNNER_NETWORKS=caddy_public
       - DRONE_RUNNER_NETWORK_OPTS=com.docker.network.drive.mtu:1442
     networks:
-      - caddy_public
+      - drone_net
     deploy:
       replicas: 1
       update_config:
@@ -69,15 +71,17 @@ services:
 
   drone-db:
     image: postgres:15
-    restart: always
+    restart: unless-stopped
     networks:
-      - caddy_public
+      - drone_net
     environment:
       POSTGRES_USER: drone
       POSTGRES_PASSWORD: drone
       POSTGRES_DB: drone
     
 networks:
+  drone_net:
+    name: drone_net
   caddy_public:
     external: true
 
