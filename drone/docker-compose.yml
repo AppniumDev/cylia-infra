@@ -52,7 +52,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DRONE_DEBUG=true
-      - DRONE_RPC_HOST=drone-server:8005
+      - DRONE_RPC_HOST=https://drone.cylia.cloud
       - DRONE_RPC_SERVER=drone-server:8005
       - DRONE_RPC_SECRET=c0feb88a3cd153cc1f7446a8830ee587
       - DRONE_RUNNER_CAPACITY=10
