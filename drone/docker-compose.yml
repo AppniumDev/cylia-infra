@@ -6,8 +6,8 @@ services:
     volumes:
       - ./dronedata:/data
     environment:
-      - DRONE_DATABASE_DRIVER=sqlite3
-      - DRONE_DATABASE_DATASOURCE=/data/database.sqlite
+      - DRONE_DATABASE_DRIVER=postgres
+      - DRONE_DATABASE_DATASOURCE=postgres://drone:drone@drone-db:5432/drone?sslmode=disable
       - DRONE_RPC_SECRET=c0feb88a3cd153cc1f7446a8830ee587
       - DRONE_COOKIE_TIMEOUT=720h
       - DRONE_CRON_DISABLED=true
@@ -61,6 +61,14 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
+
+    drone-db:
+      image: postgres:15
+      restart: always
+      environment:
+        POSTGRES_USER: drone
+        POSTGRES_PASSWORD: drone
+        POSTGRES_DB: drone
     
 networks:
   caddy_public:
