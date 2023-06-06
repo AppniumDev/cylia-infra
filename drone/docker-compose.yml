@@ -62,13 +62,13 @@ services:
       restart_policy:
         condition: on-failure
 
-    drone-db:
-      image: postgres:15
-      restart: always
-      environment:
-        POSTGRES_USER: drone
-        POSTGRES_PASSWORD: drone
-        POSTGRES_DB: drone
+  drone-db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: drone
+      POSTGRES_PASSWORD: drone
+      POSTGRES_DB: drone
     
 networks:
   caddy_public:
