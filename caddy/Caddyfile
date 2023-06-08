@@ -12,18 +12,3 @@ portainer.cylia.cloud {
         }
     }
 }
-
-drone.cylia.cloud {
-    log {
-        output file /var/log/caddy/drone.log {
-        roll_size 20mb
-        roll_keep 2
-        roll_keep_for 6h
-        }
-        format console
-        level error
-    }
-    
-    encode gzip zstd
-    reverse_proxy drone:8005
-}
