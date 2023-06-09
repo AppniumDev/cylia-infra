@@ -25,3 +25,9 @@ A Portainer + Caddy with automatic SSL setup for production using docker swarm.
 10. Wait for services to go up
 11. Navigate to https://portainer.cylia.cloud 
     (license code: 2-pOmAbAsu5X470fbohGA/ydBvNjHH3fyto1XeSY1kJCe9vb0LHkZBUdDp/8b2lsemdT0dZOeOK8c4EyK7mGOAA==)
+
+
+## Caddy file reload
+    ```
+    docker exec -w /etc/caddy ${docker_container_id} caddy reload
+    ```
