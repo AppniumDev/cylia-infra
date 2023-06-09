@@ -12,3 +12,15 @@ portainer.cylia.cloud {
         }
     }
 }
+
+
+mageai.cylia.cloud {
+    reverse_proxy {
+        to mage-ai:6789
+
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
+}
