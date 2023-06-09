@@ -16,7 +16,7 @@ portainer.cylia.cloud {
 
 mageai.cylia.cloud {
     reverse_proxy {
-        to mage-ai:6789
+        to https://mage-ai:6789
 
         transport http {
             tls
