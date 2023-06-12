@@ -22,3 +22,7 @@ mageai.cylia.cloud {
 gerapy.cylia.cloud {
     reverse_proxy gerapy:8000
 }
+
+scrapyd.cylia.cloud {
+    reverse_proxy scrapyd:6800
+}
