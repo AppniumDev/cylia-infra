@@ -24,5 +24,5 @@ gerapy.cylia.cloud {
 }
 
 scrapyd.cylia.cloud {
-    reverse_proxy scrapyd:6800
+    reverse_proxy scrapyd_scrapyd:6800
 }
