@@ -30,12 +30,5 @@ scrapyd.cylia.io {
 }
 
 netdata.cylia.io {
-    reverse_proxy {
-        to https://netdata:19999
-
-        transport http {
-            tls
-            tls_insecure_skip_verify
-        }
-    }
+    reverse_proxy netdata:19999
 }
