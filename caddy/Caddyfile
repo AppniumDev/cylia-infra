@@ -34,5 +34,5 @@ netdata.cylia.io {
 }
 
 weaviate.cylia.io {
-    reverse_proxy weaviate:8080
+    reverse_proxy weaviate:5000
 }
