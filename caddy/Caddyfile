@@ -21,6 +21,21 @@ mongodb.cylia.io {
     reverse_proxy cylia-mongodb:27017
 }
 
+postgresql.cylia.io {
+    reverse_proxy cylia-mongodb:27017
+}
+
 scrapyd.cylia.io {
     reverse_proxy scrapyd:6800
+}
+
+netdata.cylia.io {
+    reverse_proxy {
+        to https://netdata:19999
+
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
 }
