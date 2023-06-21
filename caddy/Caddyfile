@@ -2,7 +2,7 @@
     email developer.appnium@gmail.com
 }
 
-portainer.cylia.cloud {
+portainer.cylia.io {
     reverse_proxy {
         to https://portainer:9443
 
@@ -13,14 +13,14 @@ portainer.cylia.cloud {
     }
 }
 
-mageai.cylia.cloud {
+mageai.cylia.io {
     reverse_proxy mage-ai:6789
 }
 
-mongodb.cylia.cloud {
+mongodb.cylia.io {
     reverse_proxy cylia-mongodb:27017
 }
 
-scrapyd.cylia.cloud {
+scrapyd.cylia.io {
     reverse_proxy scrapyd:6800
 }

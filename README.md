@@ -17,14 +17,22 @@ A Portainer + Caddy with automatic SSL setup for production using docker swarm.
     docker stack deploy -c docker-compose.yml caddy
     ```
 8. Wait for service to go up
-    If replicas 0/1 --> "docker compose up" and repeat from step 7
+    If replicas 0/1 --> "docker compose up" and repeat from step 7, add missing folders inside caddy folder (caddy_config, caddy_data)
+    ```
+    cd caddy
+    mkdir caddy_config
+    mkdir caddy_data
+    ```
+
 9: Go to /portainer
     ```
     docker stack deploy -c docker-compose.yml portainer
     ```
 10. Wait for services to go up
-11. Navigate to https://portainer.cylia.cloud 
+11. Navigate to https://portainer.cylia.io 
     (license code: 2-pOmAbAsu5X470fbohGA/ydBvNjHH3fyto1XeSY1kJCe9vb0LHkZBUdDp/8b2lsemdT0dZOeOK8c4EyK7mGOAA==)
+
+    (license code: 2-KhbQe2lwPE+97hQW2eQPHxfxjCBgP+blt5o7cUFV4zD+QtghmPhTq4zCur04bT+EglDtzWZMHRn7SYvi9ZVn)
 
 
 ## Caddy file reload
