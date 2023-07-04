@@ -22,7 +22,7 @@ mongodb.cylia.io {
 }
 
 postgresql.cylia.io {
-    reverse_proxy cylia-mongodb:27017
+    reverse_proxy cylia-postgres:5432
 }
 
 scrapyd.cylia.io {
